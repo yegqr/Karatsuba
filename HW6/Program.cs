@@ -1,48 +1,43 @@
-﻿using System.Diagnostics;
-using HW6;
-
-class Program
+﻿class Program
 {
     private static void Main(string[] args)
     {
-        var sw = new Stopwatch();
-        sw.Start(); 
-        double lat = 0;
-        double lonh = 0;
-        double radius = 0;
-        
-        for (int i = 0; i < args.Length; i++)
+        var num1 = "";
+        var num2 = "";
+        var operatorr = '0';
+        foreach (var character in string.Join("", args))
         {
-            var temp = args[i].Split("=");
-            
-            if (temp[0] == "--lat")
+            if (character == '+' ||character == '-' ||character == '*')
             {
-                double.TryParse(temp[1], out lat);
+                operatorr = character;
             }
-            else if (temp[0] == "--long")
+            else if ( operatorr == '0' && (char.IsDigit(character)))
             {
-                double.TryParse(temp[1], out lonh);
+                num1 += character;
             }
-            else if (temp[0] == "--size")
+            else if ( char.IsDigit(character))
             {
-                double.TryParse(temp[1], out radius);
+                num2 += character;
             }
         }
-        
-        foreach (var row in File.ReadAllLines(@"C:\\Users\\iskos\\RiderProjects\\HW6\\HW6\\ukraine_poi.csv"))
+
+        switch (operatorr == '+')
         {
-            var splited = row.Split(";");
-            var distance = HaversineFormula.CalculateDistance(Convert.ToDouble(splited[0]),
-                Convert.ToDouble(splited[1]), lat, lonh);
-                                       ;
-            if ( distance <= radius)
-            {
-                Console.WriteLine(row);
-            }
+            case true :
+                Console.WriteLine(new BigInteger(num1) + new BigInteger(num2));
+                break;
+            case false:
+                switch (operatorr == '-')
+                {
+                    case true:
+                        Console.WriteLine((new BigInteger(num1).Sub(new BigInteger(num2)).ToString()));
+                        break;
+                    case false :
+                        var x  = new BigInteger(num1).Multiply(new BigInteger(num2)).ToString() ;
+                        Console.WriteLine($"=> {x}");
+                        break;
+                }
+                break;
         }
-        
-        sw.Stop();
-        Console.WriteLine($"Elapsed time: {sw.Elapsed}");
     }
-    
 }

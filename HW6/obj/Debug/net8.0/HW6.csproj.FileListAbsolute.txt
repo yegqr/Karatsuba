@@ -12,3 +12,4 @@ C:\Users\iskos\RiderProjects\HW6\HW6\obj\Debug\net8.0\refint\HW6.dll
 C:\Users\iskos\RiderProjects\HW6\HW6\obj\Debug\net8.0\HW6.pdb
 C:\Users\iskos\RiderProjects\HW6\HW6\obj\Debug\net8.0\HW6.genruntimeconfig.cache
 C:\Users\iskos\RiderProjects\HW6\HW6\obj\Debug\net8.0\ref\HW6.dll
+C:\Users\iskos\RiderProjects\HW6\HW6\obj\Debug\net8.0\HW6.sourcelink.json
